@@ -150,135 +150,11 @@ h1 { color: var(--navy); font-size: 1.45rem; font-weight: 800; margin-bottom: 22
 .evo-summary strong { color: var(--navy); }
 
 @media (max-width: 1100px) { .grid { grid-template-columns: 1fr; } }
-
-
-/* ═══════════════════════════════════ RISK MATRIX ═══════════════════════════════════ */
-.matrix-wrap { margin-bottom: 32px; }
-.matrix-wrap h2 { font-size:1rem; font-weight:700; color:#1a3a5c; margin:0 0 4px; }
-.matrix-legend { display:flex; align-items:center; gap:18px; margin-bottom:16px; font-size:.75rem; color:#5a6a7a; flex-wrap:wrap; }
-.legend-dot { display:inline-flex; align-items:center; gap:5px; }
-.dot-v2 { width:10px; height:10px; border-radius:50%; background:#1a3a5c; flex-shrink:0; }
-.dot-new { width:10px; height:10px; border-radius:50%; background:#f59e0b; border:1.5px solid #b45309; flex-shrink:0; }
-.matrix-legend b { color:#374151; }
-.matrix-outer { display:grid; grid-template-columns:28px 1fr; gap:8px; align-items:stretch; }
-.y-axis-label { display:flex; flex-direction:column; justify-content:stretch; gap:4px; }
-.y-axis-top, .y-axis-bot { flex:1; display:flex; align-items:center; justify-content:center; writing-mode:vertical-rl; transform:rotate(180deg); font-size:.65rem; font-weight:700; letter-spacing:.5px; text-transform:uppercase; border-radius:4px; padding:8px 3px; }
-.y-axis-top { background:#fde8e8; color:#b91c1c; border-left:3px solid #e74c3c; }
-.y-axis-bot { background:#fef3c7; color:#92400e; border-left:3px solid #f59e0b; }
-.matrix-inner { display:grid; grid-template-rows:auto 1fr 1fr; grid-template-columns:1fr 1fr; gap:0; border-radius:8px; overflow:hidden; border:2px solid #cbd5e0; }
-.x-axis-left, .x-axis-right { padding:6px 10px; font-size:.68rem; font-weight:700; text-transform:uppercase; letter-spacing:.5px; text-align:center; border-bottom:2px solid #cbd5e0; background:#edf2f7; color:#4a5568; }
-.x-axis-left { border-right:2px solid #cbd5e0; }
-.quad { padding:14px 12px; display:flex; flex-direction:column; gap:10px; min-height:180px; }
-.quad-tl { background:#fff5f5; border-right:2px solid #cbd5e0; border-bottom:2px solid #cbd5e0; }
-.quad-tr { background:#fff5f5; border-bottom:2px solid #cbd5e0; }
-.quad-bl { background:#fffbeb; border-right:2px solid #cbd5e0; }
-.quad-br { background:#fffbeb; }
-.quad-label { font-size:.67rem; font-weight:700; color:#718096; text-transform:uppercase; letter-spacing:.4px; margin-bottom:2px; }
-.quad-count { display:inline-block; background:#e2e8f0; color:#4a5568; border-radius:10px; padding:1px 6px; font-size:.62rem; font-weight:600; margin-left:5px; }
-.chips-wrap { display:flex; flex-wrap:wrap; gap:5px; }
-.rchip { display:inline-flex; align-items:center; gap:0; border-radius:4px; overflow:hidden; font-size:.64rem; line-height:1.25; white-space:nowrap; box-shadow:0 1px 2px rgba(0,0,0,.08); }
-.rchip-v2 .rchip-id { background:#1a3a5c; color:#fff; padding:3px 5px; font-weight:700; }
-.rchip-v2 .rchip-name { background:#2c5282; color:#e8f0f8; padding:3px 7px; }
-.rchip-new .rchip-id { background:#b45309; color:#fff; padding:3px 5px; font-weight:700; }
-.rchip-new .rchip-name { background:#fef3c7; color:#78350f; padding:3px 7px; border:1px solid #fde68a; border-left:none; }
-/* ══════════════════════════════════════════════════════════════════════════════════ */
 </style>
 </head>
 <body>
 
 <h1>Directions to improve AI Kids Safety Taxonomy</h1>
-
-
-
-
-<!-- ====== SYNTHESIS MATRIX ====== -->
-<div class="matrix-wrap">
-
-  <h2>V3 Taxonomy — Risk Landscape (32 risks)</h2>
-  <div class="matrix-legend">
-    <span class="legend-dot"><span class="dot-v2"></span><b>In KORA V2</b> (23 risks)</span>
-    <span class="legend-dot"><span class="dot-new"></span><b>New in V3</b> (9 risks)</span>
-  </div>
-
-  <div class="matrix-outer">
-    <!-- Y-axis labels -->
-    <div class="y-axis-label">
-      <div class="y-axis-top">🔴 Direct Harm<br>(observable)</div>
-      <div class="y-axis-bot">🟡 Missed Dev.<br>Opportunity</div>
-    </div>
-
-    <!-- Inner 2×2 grid -->
-    <div class="matrix-inner">
-
-      <!-- X-axis headers -->
-      <div class="x-axis-left">⏱ Short-term</div>
-      <div class="x-axis-right">📅 Long-term</div>
-
-      <!-- Q1: Short-term / Direct Harm -->
-      <div class="quad quad-tl">
-        <div class="quad-label">Short-term · Direct Harm<span class="quad-count">9</span></div>
-        <div class="chips-wrap">
-          <span class="rchip rchip-v2"><span class="rchip-id">1.1</span><span class="rchip-name">Violence & Physical Harm</span></span>
-          <span class="rchip rchip-v2"><span class="rchip-id">1.2</span><span class="rchip-name">Self-Harm & Eating Disorders</span></span>
-          <span class="rchip rchip-v2"><span class="rchip-id">1.3</span><span class="rchip-name">Regulated & Illegal Activities</span></span>
-          <span class="rchip rchip-v2"><span class="rchip-id">2.1</span><span class="rchip-name">Sexual Content</span></span>
-          <span class="rchip rchip-v2"><span class="rchip-id">2.2</span><span class="rchip-name">Sexual Violence & Abuse</span></span>
-          <span class="rchip rchip-v2"><span class="rchip-id">2.4</span><span class="rchip-name">Unsafe Sexual Guidance</span></span>
-          <span class="rchip rchip-v2"><span class="rchip-id">3.2</span><span class="rchip-name">Fear, Trauma & Distress</span></span>
-          <span class="rchip rchip-v2"><span class="rchip-id">7.2</span><span class="rchip-name">Cybersecurity</span></span>
-          <span class="rchip rchip-new"><span class="rchip-id">7.3</span><span class="rchip-name">Privacy Violations</span></span>
-        </div>
-      </div>
-
-      <!-- Q2: Long-term / Direct Harm -->
-      <div class="quad quad-tr">
-        <div class="quad-label">Long-term · Direct Harm<span class="quad-count">10</span></div>
-        <div class="chips-wrap">
-          <span class="rchip rchip-v2"><span class="rchip-id">2.3</span><span class="rchip-name">Sexual Grooming</span></span>
-          <span class="rchip rchip-v2"><span class="rchip-id">3.3</span><span class="rchip-name">Mental Health Mishandling</span></span>
-          <span class="rchip rchip-v2"><span class="rchip-id">3.4</span><span class="rchip-name">Emotional Grooming</span></span>
-          <span class="rchip rchip-v2"><span class="rchip-id">3.5</span><span class="rchip-name">Parasocial Attachment</span></span>
-          <span class="rchip rchip-v2"><span class="rchip-id">5.3</span><span class="rchip-name">Radicalization & Extremism</span></span>
-          <span class="rchip rchip-v2"><span class="rchip-id">6.1</span><span class="rchip-name">Undermining Authority & Trust</span></span>
-          <span class="rchip rchip-v2"><span class="rchip-id">6.4</span><span class="rchip-name">Domestic Harm & Neglect</span></span>
-          <span class="rchip rchip-v2"><span class="rchip-id">7.1</span><span class="rchip-name">Risky Online Behaviors</span></span>
-          <span class="rchip rchip-new"><span class="rchip-id">8.5</span><span class="rchip-name">Sensorimotor & Social Displacement</span></span>
-          <span class="rchip rchip-new"><span class="rchip-id">9.2</span><span class="rchip-name">AI Divide</span></span>
-        </div>
-      </div>
-
-      <!-- Q3: Short-term / Missed Opportunity -->
-      <div class="quad quad-bl">
-        <div class="quad-label">Short-term · Missed Opportunity<span class="quad-count">3</span></div>
-        <div class="chips-wrap">
-          <span class="rchip rchip-v2"><span class="rchip-id">3.1</span><span class="rchip-name">Sycophancy</span></span>
-          <span class="rchip rchip-v2"><span class="rchip-id">5.1</span><span class="rchip-name">Factual Hallucinations</span></span>
-          <span class="rchip rchip-v2"><span class="rchip-id">8.1</span><span class="rchip-name">Cognitive Mismatch</span></span>
-        </div>
-      </div>
-
-      <!-- Q4: Long-term / Missed Opportunity -->
-      <div class="quad quad-br">
-        <div class="quad-label">Long-term · Missed Opportunity<span class="quad-count">10</span></div>
-        <div class="chips-wrap">
-          <span class="rchip rchip-v2"><span class="rchip-id">5.2</span><span class="rchip-name">Bias & Stereotyping</span></span>
-          <span class="rchip rchip-v2"><span class="rchip-id">6.2</span><span class="rchip-name">Harmful Social Norms</span></span>
-          <span class="rchip rchip-v2"><span class="rchip-id">8.2</span><span class="rchip-name">Cognitive Substitution</span></span>
-          <span class="rchip rchip-v2"><span class="rchip-id">8.3</span><span class="rchip-name">Rigid Worldview Shaping</span></span>
-          <span class="rchip rchip-new"><span class="rchip-id">8.4</span><span class="rchip-name">Autonomy Displacement</span></span>
-          <span class="rchip rchip-new"><span class="rchip-id">9.1</span><span class="rchip-name">Cultural Erosion</span></span>
-          <span class="rchip rchip-new"><span class="rchip-id">9.3</span><span class="rchip-name">Epistemic Power Concentration</span></span>
-          <span class="rchip rchip-new"><span class="rchip-id">9.4</span><span class="rchip-name">Normative Displacement</span></span>
-          <span class="rchip rchip-new"><span class="rchip-id">9.5</span><span class="rchip-name">Educational Fabric Disruption</span></span>
-          <span class="rchip rchip-new"><span class="rchip-id">9.6</span><span class="rchip-name">Cognitive Homogenization</span></span>
-        </div>
-      </div>
-
-    </div><!-- end matrix-inner -->
-  </div><!-- end matrix-outer -->
-
-</div><!-- end matrix-wrap -->
-<!-- ====== END SYNTHESIS MATRIX ====== -->
 
 <div class="grid">
 
@@ -899,7 +775,6 @@ h1 { color: var(--navy); font-size: 1.45rem; font-weight: 800; margin-bottom: 22
       </svg>
       ⬇ Download this content
     </a>
-    <p style="font-family:Arial,sans-serif; font-size:11px; color:#999; margin: 8px 0 0; letter-spacing:.3px;">Taxonomy V1 · V2 · V3</p>
 
   </div>
 
