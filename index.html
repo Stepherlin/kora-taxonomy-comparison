@@ -150,11 +150,230 @@ h1 { color: var(--navy); font-size: 1.45rem; font-weight: 800; margin-bottom: 22
 .evo-summary strong { color: var(--navy); }
 
 @media (max-width: 1100px) { .grid { grid-template-columns: 1fr; } }
+
+/* ── Synthesis Matrix ──────────────────────────────────────────────── */
+.matrix-section {
+  background: #f8fafc;
+  border: 1px solid #dde4ed;
+  border-radius: 12px;
+  padding: 24px 28px 28px;
+  margin-bottom: 28px;
+  font-family: inherit;
+}
+.matrix-header { margin-bottom: 16px; }
+.matrix-header h2 {
+  margin: 0 0 4px;
+  font-size: 1.1rem;
+  color: #1a3a5c;
+  font-weight: 700;
+  letter-spacing: .3px;
+}
+.matrix-desc { margin: 0; font-size: .78rem; color: #5a6a7a; }
+.legend-v2   { color: #1a3a5c; font-weight: 600; }
+.legend-v3new{ color: #b45309; font-weight: 600; }
+
+.matrix-grid {
+  display: grid;
+  grid-template-columns: auto 1fr 1fr;
+  grid-template-rows: auto 1fr 1fr;
+  gap: 10px;
+}
+
+/* axis labels */
+.y-label-top, .y-label-bot {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  text-align: center;
+  font-size: .68rem;
+  font-weight: 700;
+  color: #4a5568;
+  letter-spacing: .4px;
+  padding: 4px 2px;
+  line-height: 1.3;
+}
+.y-label-top { grid-row: 2; grid-column: 1; color: #c0392b; }
+.y-label-bot { grid-row: 3; grid-column: 1; color: #d97706; }
+.y-label-top span, .y-label-bot span { font-weight: 400; font-size: .63rem; }
+
+.x-label-left, .x-label-right {
+  grid-row: 1;
+  text-align: center;
+  font-size: .72rem;
+  font-weight: 700;
+  color: #4a5568;
+  letter-spacing: .3px;
+  padding-bottom: 2px;
+}
+.x-label-left  { grid-column: 2; }
+.x-label-right { grid-column: 3; }
+
+/* quadrants */
+.quad {
+  background: #fff;
+  border-radius: 8px;
+  padding: 12px 14px;
+  border: 1px solid #e2e8f0;
+}
+.quad-tl { grid-row: 2; grid-column: 2; border-top: 3px solid #e74c3c; }
+.quad-tr { grid-row: 2; grid-column: 3; border-top: 3px solid #c0392b; }
+.quad-bl { grid-row: 3; grid-column: 2; border-top: 3px solid #f59e0b; }
+.quad-br { grid-row: 3; grid-column: 3; border-top: 3px solid #d97706; }
+
+.quad-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.quad-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+.quad-title { font-size: .78rem; font-weight: 700; color: #1a3a5c; line-height: 1.3; }
+.quad-sub   { font-size: .67rem; color: #718096; margin-top: 1px; line-height: 1.3; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 5px; }
+
+.chip-v2 {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  background: #1a3a5c;
+  color: #fff;
+  border-radius: 20px;
+  padding: 3px 9px;
+  font-size: .67rem;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+.chip-v2 b { font-weight: 700; opacity: .85; }
+
+.chip-v3new {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  background: #fff;
+  color: #b45309;
+  border: 1.5px solid #f59e0b;
+  border-radius: 20px;
+  padding: 2px 8px;
+  font-size: .67rem;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+.chip-v3new b { font-weight: 700; }
+/* ── End Synthesis Matrix ───────────────────────────────────────────── */
+
 </style>
 </head>
 <body>
 
 <h1>Directions to improve AI Kids Safety Taxonomy</h1>
+
+
+<!-- ====== SYNTHESIS MATRIX ====== -->
+<div class="matrix-section">
+
+  <div class="matrix-header">
+    <h2>V3 Taxonomy — Risk Landscape</h2>
+    <p class="matrix-desc">All 32 V3 risks mapped across two dimensions · <span class="legend-v2">■ In KORA V2</span> <span class="legend-v3new">■ New in V3</span></p>
+  </div>
+
+  <div class="matrix-grid">
+
+    <!-- Y-axis label -->
+    <div class="y-label-top">🔴 Direct Harm<br><span>(Observable)</span></div>
+    <div class="y-label-bot">🟡 Missed Dev Opportunity<br><span>(Non-observable)</span></div>
+
+    <!-- Column labels -->
+    <div class="x-label-left">⏱ Short-term</div>
+    <div class="x-label-right">📅 Long-term</div>
+
+    <!-- Q1: Short-term + Harm -->
+<div class="quad quad-tl">
+        <div class="quad-header">
+          <span class="quad-icon">🔴</span>
+          <div>
+            <div class="quad-title">Short-term · Direct Harm</div>
+            <div class="quad-sub">Immediate, observable impacts on child safety</div>
+          </div>
+        </div>
+        <div class="chips">
+          <span class="chip-v2"><b>1.1</b> Violence & Physical Harm</span>
+          <span class="chip-v2"><b>1.2</b> Self-Harm & Eating Disorders</span>
+          <span class="chip-v2"><b>1.3</b> Regulated & Illegal Activities</span>
+          <span class="chip-v2"><b>2.1</b> Sexual Content</span>
+          <span class="chip-v2"><b>2.2</b> Sexual Violence & Abuse</span>
+          <span class="chip-v2"><b>2.4</b> Unsafe Sexual Guidance</span>
+          <span class="chip-v2"><b>3.2</b> Fear, Trauma & Distress</span>
+          <span class="chip-v2"><b>7.2</b> Cybersecurity</span>
+          <span class="chip-v3new"><b>7.3</b> Privacy Violations</span>
+        </div>
+      </div>
+
+    <!-- Q2: Long-term + Harm -->
+<div class="quad quad-tr">
+        <div class="quad-header">
+          <span class="quad-icon">🔴</span>
+          <div>
+            <div class="quad-title">Long-term · Direct Harm</div>
+            <div class="quad-sub">Cumulative observable damage over time</div>
+          </div>
+        </div>
+        <div class="chips">
+          <span class="chip-v2"><b>2.3</b> Sexual Grooming</span>
+          <span class="chip-v2"><b>3.3</b> Mental Health Mishandling</span>
+          <span class="chip-v2"><b>3.4</b> Emotional Grooming</span>
+          <span class="chip-v2"><b>3.5</b> Parasocial Attachment</span>
+          <span class="chip-v2"><b>5.3</b> Radicalization & Extremism</span>
+          <span class="chip-v2"><b>6.1</b> Undermining Authority & Trust</span>
+          <span class="chip-v2"><b>6.4</b> Domestic Harm & Neglect</span>
+          <span class="chip-v2"><b>7.1</b> Risky Online Behaviors</span>
+          <span class="chip-v3new"><b>8.5</b> Sensorimotor & Social Displacement</span>
+          <span class="chip-v3new"><b>9.2</b> AI Divide</span>
+        </div>
+      </div>
+
+    <!-- Q3: Short-term + Missed Opportunity -->
+<div class="quad quad-bl">
+        <div class="quad-header">
+          <span class="quad-icon">🟡</span>
+          <div>
+            <div class="quad-title">Short-term · Missed Dev Opportunity</div>
+            <div class="quad-sub">Immediate gaps in healthy development</div>
+          </div>
+        </div>
+        <div class="chips">
+          <span class="chip-v2"><b>3.1</b> Sycophancy</span>
+          <span class="chip-v2"><b>5.1</b> Factual Hallucinations</span>
+          <span class="chip-v2"><b>8.1</b> Cognitive Mismatch</span>
+        </div>
+      </div>
+
+    <!-- Q4: Long-term + Missed Opportunity -->
+<div class="quad quad-br">
+        <div class="quad-header">
+          <span class="quad-icon">🟡</span>
+          <div>
+            <div class="quad-title">Long-term · Missed Dev Opportunity</div>
+            <div class="quad-sub">Long-range developmental & societal losses</div>
+          </div>
+        </div>
+        <div class="chips">
+          <span class="chip-v2"><b>5.2</b> Bias & Stereotyping</span>
+          <span class="chip-v2"><b>6.2</b> Harmful Social Norms</span>
+          <span class="chip-v2"><b>8.2</b> Cognitive Substitution</span>
+          <span class="chip-v2"><b>8.3</b> Rigid Worldview Shaping</span>
+          <span class="chip-v3new"><b>8.4</b> Autonomy Displacement</span>
+          <span class="chip-v3new"><b>9.1</b> Cultural Erosion</span>
+          <span class="chip-v3new"><b>9.3</b> Epistemic Power Concentration</span>
+          <span class="chip-v3new"><b>9.4</b> Normative Displacement</span>
+          <span class="chip-v3new"><b>9.5</b> Educational Fabric Disruption</span>
+          <span class="chip-v3new"><b>9.6</b> Cognitive Homogenization</span>
+        </div>
+      </div>
+
+  </div><!-- end matrix-grid -->
+
+</div><!-- end matrix-section -->
+<!-- ====== END SYNTHESIS MATRIX ====== -->
 
 <div class="grid">
 
