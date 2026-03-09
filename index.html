@@ -151,6 +151,37 @@ h1 { color: var(--navy); font-size: 1.45rem; font-weight: 800; margin-bottom: 22
 
 @media (max-width: 1100px) { .grid { grid-template-columns: 1fr; } }
 
+
+/* ═══════════════════════════════════ RISK MATRIX ═══════════════════════════════════ */
+.matrix-wrap { margin-bottom: 32px; }
+.matrix-wrap h2 { font-size:1rem; font-weight:700; color:#1a3a5c; margin:0 0 4px; }
+.matrix-legend { display:flex; align-items:center; gap:18px; margin-bottom:16px; font-size:.75rem; color:#5a6a7a; flex-wrap:wrap; }
+.legend-dot { display:inline-flex; align-items:center; gap:5px; }
+.dot-v2 { width:10px; height:10px; border-radius:50%; background:#1a3a5c; flex-shrink:0; }
+.dot-new { width:10px; height:10px; border-radius:50%; background:#f59e0b; border:1.5px solid #b45309; flex-shrink:0; }
+.matrix-legend b { color:#374151; }
+.matrix-outer { display:grid; grid-template-columns:28px 1fr; gap:8px; align-items:stretch; }
+.y-axis-label { display:flex; flex-direction:column; justify-content:stretch; gap:4px; }
+.y-axis-top, .y-axis-bot { flex:1; display:flex; align-items:center; justify-content:center; writing-mode:vertical-rl; transform:rotate(180deg); font-size:.65rem; font-weight:700; letter-spacing:.5px; text-transform:uppercase; border-radius:4px; padding:8px 3px; }
+.y-axis-top { background:#fde8e8; color:#b91c1c; border-left:3px solid #e74c3c; }
+.y-axis-bot { background:#fef3c7; color:#92400e; border-left:3px solid #f59e0b; }
+.matrix-inner { display:grid; grid-template-rows:auto 1fr 1fr; grid-template-columns:1fr 1fr; gap:0; border-radius:8px; overflow:hidden; border:2px solid #cbd5e0; }
+.x-axis-left, .x-axis-right { padding:6px 10px; font-size:.68rem; font-weight:700; text-transform:uppercase; letter-spacing:.5px; text-align:center; border-bottom:2px solid #cbd5e0; background:#edf2f7; color:#4a5568; }
+.x-axis-left { border-right:2px solid #cbd5e0; }
+.quad { padding:14px 12px; display:flex; flex-direction:column; gap:10px; min-height:180px; }
+.quad-tl { background:#fff5f5; border-right:2px solid #cbd5e0; border-bottom:2px solid #cbd5e0; }
+.quad-tr { background:#fff5f5; border-bottom:2px solid #cbd5e0; }
+.quad-bl { background:#fffbeb; border-right:2px solid #cbd5e0; }
+.quad-br { background:#fffbeb; }
+.quad-label { font-size:.67rem; font-weight:700; color:#718096; text-transform:uppercase; letter-spacing:.4px; margin-bottom:2px; }
+.quad-count { display:inline-block; background:#e2e8f0; color:#4a5568; border-radius:10px; padding:1px 6px; font-size:.62rem; font-weight:600; margin-left:5px; }
+.chips-wrap { display:flex; flex-wrap:wrap; gap:5px; }
+.rchip { display:inline-flex; align-items:center; gap:0; border-radius:4px; overflow:hidden; font-size:.64rem; line-height:1.25; white-space:nowrap; box-shadow:0 1px 2px rgba(0,0,0,.08); }
+.rchip-v2 .rchip-id { background:#1a3a5c; color:#fff; padding:3px 5px; font-weight:700; }
+.rchip-v2 .rchip-name { background:#2c5282; color:#e8f0f8; padding:3px 7px; }
+.rchip-new .rchip-id { background:#b45309; color:#fff; padding:3px 5px; font-weight:700; }
+.rchip-new .rchip-name { background:#fef3c7; color:#78350f; padding:3px 7px; border:1px solid #fde68a; border-left:none; }
+/* ══════════════════════════════════════════════════════════════════════════════════ */
 </style>
 </head>
 <body>
@@ -874,191 +905,3 @@ h1 { color: var(--navy); font-size: 1.45rem; font-weight: 800; margin-bottom: 22
 
 </body>
 </html>
-/* ═══════════════════════════════════════════════════════════════
-   RISK MATRIX VISUALIZATION
-═══════════════════════════════════════════════════════════════ */
-.matrix-wrap {
-  margin-bottom: 32px;
-}
-.matrix-wrap h2 {
-  font-size: 1rem;
-  font-weight: 700;
-  color: #1a3a5c;
-  margin: 0 0 4px;
-  letter-spacing: .3px;
-}
-.matrix-legend {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  margin-bottom: 16px;
-  font-size: .75rem;
-  color: #5a6a7a;
-  flex-wrap: wrap;
-}
-.legend-dot {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-}
-.legend-dot .dot-v2 {
-  width: 10px; height: 10px;
-  border-radius: 50%;
-  background: #1a3a5c;
-  flex-shrink: 0;
-}
-.legend-dot .dot-new {
-  width: 10px; height: 10px;
-  border-radius: 50%;
-  background: #f59e0b;
-  border: 1.5px solid #b45309;
-  flex-shrink: 0;
-}
-.matrix-legend b { color: #374151; }
-
-/* Outer container with axis labels */
-.matrix-outer {
-  display: grid;
-  grid-template-columns: 28px 1fr;
-  grid-template-rows: 1fr;
-  gap: 8px;
-  align-items: stretch;
-}
-.y-axis-label {
-  display: flex;
-  flex-direction: column;
-  justify-content: stretch;
-  gap: 4px;
-}
-.y-axis-top, .y-axis-bot {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  font-size: .65rem;
-  font-weight: 700;
-  letter-spacing: .5px;
-  text-transform: uppercase;
-  border-radius: 4px;
-  padding: 8px 3px;
-}
-.y-axis-top {
-  background: #fde8e8;
-  color: #b91c1c;
-  border-left: 3px solid #e74c3c;
-}
-.y-axis-bot {
-  background: #fef3c7;
-  color: #92400e;
-  border-left: 3px solid #f59e0b;
-}
-
-.matrix-inner {
-  display: grid;
-  grid-template-rows: auto 1fr 1fr;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
-  border-radius: 8px;
-  overflow: hidden;
-  border: 2px solid #cbd5e0;
-}
-
-/* X-axis header row */
-.x-axis-left, .x-axis-right {
-  padding: 6px 10px;
-  font-size: .68rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: .5px;
-  text-align: center;
-  border-bottom: 2px solid #cbd5e0;
-}
-.x-axis-left {
-  background: #edf2f7;
-  color: #4a5568;
-  border-right: 2px solid #cbd5e0;
-}
-.x-axis-right {
-  background: #edf2f7;
-  color: #4a5568;
-}
-
-/* Quadrant cells */
-.quad {
-  padding: 14px 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  min-height: 180px;
-}
-.quad-tl { background: #fff5f5; border-right: 2px solid #cbd5e0; border-bottom: 2px solid #cbd5e0; }
-.quad-tr { background: #fff5f5; border-bottom: 2px solid #cbd5e0; }
-.quad-bl { background: #fffbeb; border-right: 2px solid #cbd5e0; }
-.quad-br { background: #fffbeb; }
-
-.quad-label {
-  font-size: .67rem;
-  font-weight: 700;
-  color: #718096;
-  text-transform: uppercase;
-  letter-spacing: .4px;
-  margin-bottom: 2px;
-}
-.quad-count {
-  display: inline-block;
-  background: #e2e8f0;
-  color: #4a5568;
-  border-radius: 10px;
-  padding: 1px 6px;
-  font-size: .62rem;
-  font-weight: 600;
-  margin-left: 5px;
-}
-
-.chips-wrap {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-}
-
-/* Risk chips */
-.rchip {
-  display: inline-flex;
-  align-items: center;
-  gap: 0;
-  border-radius: 4px;
-  overflow: hidden;
-  font-size: .64rem;
-  line-height: 1.25;
-  white-space: nowrap;
-  box-shadow: 0 1px 2px rgba(0,0,0,.08);
-}
-.rchip-v2 .rchip-id {
-  background: #1a3a5c;
-  color: #fff;
-  padding: 3px 5px;
-  font-weight: 700;
-}
-.rchip-v2 .rchip-name {
-  background: #2c5282;
-  color: #e8f0f8;
-  padding: 3px 7px;
-}
-.rchip-new .rchip-id {
-  background: #b45309;
-  color: #fff;
-  padding: 3px 5px;
-  font-weight: 700;
-}
-.rchip-new .rchip-name {
-  background: #fef3c7;
-  color: #78350f;
-  padding: 3px 7px;
-  border: 1px solid #fde68a;
-  border-left: none;
-}
-/* ══════════════════════════════════════════════════════════════ */
-
-
