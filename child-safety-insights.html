@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KORA Taxonomy Revised</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f0e0c;
+    --paper: #f7f4ef;
+    --cream: #ede9e1;
+    --rule: #c8c0b0;
+    --accent: #c1440e;
+    --dissolve: #8b7355;
+    --dissolve-bg: #f0ebe2;
+    --collective: #1a3a5c;
+    --collective-bg: #e4eaf0;
+    --warn: #8b6914;
+    --base-bg: #f0ede8;
+    --new-bg: #e4f0e8;
+    --new: #1a5c3a;
+    --elargi-bg: #e8f0fd;
+    --elargi: #1a3a8b;
+    --scinde-bg: #ffe8f8;
+    --scinde: #8b1a6a;
+    --reclasse-bg: #fff3e0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); font-size: 13px; line-height: 1.5; }
+  .hd { background: var(--ink); color: var(--paper); padding: 28px 44px 22px; position: relative; overflow: hidden; }
+  .hd::after { content: 'KORA'; position: absolute; right: 36px; top: 50%; transform: translateY(-50%); font-family: 'DM Serif Display', serif; font-size: 88px; color: rgba(247,244,239,.04); pointer-events: none; letter-spacing: -4px; }
+  .hd-sub { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: .15em; text-transform: uppercase; color: rgba(247,244,239,.4); margin-bottom: 5px; }
+  .hd h1 { font-family: 'DM Serif Display', serif; font-size: 21px; font-weight: 400; margin-bottom: 4px; }
+  .hd h1 em { color: var(--accent); font-style: italic; }
+  .hd-meta { font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 300; letter-spacing: .1em; color: rgba(247,244,239,.48); text-transform: uppercase; }
+  .leg { background: var(--cream); border-bottom: 1px solid var(--rule); padding: 9px 44px; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+  .li { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #555; }
+  .ld { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+  .grid { display: grid; grid-template-columns: 0.85fr 1fr; }
+  .col { padding: 26px 20px; border-right: 1px solid var(--rule); }
+  .col:last-child { border-right: none; }
+  .col-v2 { background: #fafaf8; }
+  .ch { margin-bottom: 18px; padding-bottom: 11px; border-bottom: 2px solid var(--ink); }
+  .ch-badge { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); margin-bottom: 3px; }
+  .ch h2 { font-family: 'DM Serif Display', serif; font-size: 17px; font-weight: 400; margin-bottom: 2px; }
+  .ch-meta { font-family: 'DM Mono', monospace; font-size: 10px; color: #999; }
+  .cl { font-family: 'DM Mono', monospace; font-size: 8.5px; letter-spacing: .11em; text-transform: uppercase; color: #999; padding: 5px 0 4px; border-top: 1px solid var(--rule); margin-bottom: 4px; }
+  .cl strong { font-weight: 500; color: var(--ink); }
+  .cat-block { margin-bottom: 14px; }
+  .rr { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 7px; padding: 4px 7px 5px; border-radius: 4px; margin-bottom: 2px; }
+  .rn { font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; min-width: 26px; color: #aaa; flex-shrink: 0; }
+  .rx { font-size: 12px; flex: 1; line-height: 1.3; }
+  .rt { font-family: 'DM Mono', monospace; font-size: 7.5px; letter-spacing: .05em; padding: 2px 5px; border-radius: 2px; white-space: nowrap; flex-shrink: 0; }
+  .s-b { background: var(--base-bg); }
+  .s-b .rn { color: #666; } .s-b .rx { color: #2d2d2d; font-weight: 500; }
+  .s-nw { background: var(--new-bg); }
+  .s-nw .rn { color: var(--new); } .s-nw .rx { color: var(--new); font-weight: 500; }
+  .s-el { background: var(--elargi-bg); }
+  .s-el .rn { color: var(--elargi); } .s-el .rx { color: var(--elargi); font-weight: 500; }
+  .s-sc { background: var(--scinde-bg); }
+  .s-sc .rn { color: var(--scinde); } .s-sc .rx { color: var(--scinde); font-weight: 500; }
+  .t-nw { background: var(--new-bg); color: var(--new); border: 1px solid #90c8a0; }
+  .t-r { background: var(--reclasse-bg); color: var(--warn); border: 1px solid #f0c040; }
+  .t-el { background: var(--elargi-bg); color: var(--elargi); border: 1px solid #a0b8e8; }
+  .t-sc { background: var(--scinde-bg); color: var(--scinde); border: 1px solid #e8a0d0; }
+  .gap { padding: 3px 7px 3px; display: flex; gap: 7px; }
+  .gn { font-family: 'DM Mono', monospace; font-size: 10px; color: #ddd; min-width: 26px; }
+  .gl { font-size: 11px; color: #ccc; font-style: italic; }
+  .sum { background: var(--cream); border-top: 1px solid var(--rule); padding: 22px 44px; }
+  .me { background: white; border: 1px solid var(--rule); border-left: 3px solid var(--accent); border-radius: 0 6px 6px 0; padding: 12px 16px; font-size: 11px; line-height: 1.65; color: #444; margin-top: 14px; }
+  .me .mi { padding: 2px 0; }
+  .ok { color: var(--new); }
+  .rd { font-size: 9px; font-style: italic; padding-left: 26px; line-height: 1.3; width: 100%; flex-basis: 100%; }
+  .cat-sub { font-size: 9.5px; font-style: italic; margin-bottom: 5px; margin-top: -2px; line-height: 1.4; color: #888; }
+  .wn { color: var(--warn); }
+  .rn { padding-top: 2px; }
+</style>
+</head>
+<body>
+<div class="hd">
+  <div class="hd-sub">KORA Benchmark · korabench.ai</div>
+  <h1>KORA Taxonomy <em style="color:white;font-style:italic;">V1→V2</em></h1>
+  <div class="hd-meta">March 12, 2026</div>
+</div>
+<div class="grid">
+<div class="col">
+  <div class="ch">
+    <div class="ch-badge">Original version</div>
+    <h2>KORA V1</h2>
+    <div class="ch-meta">25 risks · 8 categories</div>
+  </div>
+  <div class="cat-block">
+    <div class="cl"><strong>Cat 1 — Physical &amp; Legal Safety</strong></div>
+    <div class="rr s-b"><span class="rn">1.1</span><span class="rx">Violence &amp; Physical Harm</span></div>
+    <div class="rr s-b"><span class="rn">1.2</span><span class="rx">Self-Harm &amp; Eating Disorders</span></div>
+    <div class="rr s-b"><span class="rn">1.3</span><span class="rx">Regulated &amp; Illegal Activities</span></div>
+  </div>
+  <div class="cat-block">
+    <div class="cl"><strong>Cat 2 — Sexual Content, Exploitation &amp; Predation</strong></div>
+    <div class="rr s-b"><span class="rn">2.1</span><span class="rx">Sexual Content (Age-Inappropriate)</span></div>
+    <div class="rr s-b"><span class="rn">2.2</span><span class="rx">Sexual Violence &amp; Abuse</span></div>
+    <div class="rr s-b"><span class="rn">2.3</span><span class="rx">Sexual Grooming &amp; Boundary Violations</span></div>
+    <div class="rr s-b"><span class="rn">2.4</span><span class="rx">Unsafe Sexual Guidance</span></div>
+  </div>
+  <div class="cat-block">
+    <div class="cl"><strong>Cat 3 — Psychological &amp; Emotional Safety</strong></div>
+    <div class="rr s-b"><span class="rn">3.1</span><span class="rx">Sycophancy</span></div>
+    <div class="rr s-b"><span class="rn">3.2</span><span class="rx">Fear, Trauma &amp; Distress</span></div>
+    <div class="rr s-b"><span class="rn">3.3</span><span class="rx">Mental Health Mishandling</span></div>
+    <div class="rr s-b"><span class="rn">3.4</span><span class="rx">Emotional Grooming &amp; Manipulation</span></div>
+    <div class="rr s-b"><span class="rn">3.5</span><span class="rx">Parasocial Attachment</span></div>
+  </div>
+  <div class="cat-block">
+    <div class="cl"><strong>Cat 4 — Educational &amp; Epistemic Integrity</strong></div>
+    <div class="rr s-b"><span class="rn">4.1</span><span class="rx">Factual Hallucinations &amp; Misinformation</span></div>
+    <div class="rr s-b"><span class="rn">4.2</span><span class="rx">Academic Dishonesty &amp; Misuse</span></div>
+    <div class="rr s-b"><span class="rn">4.3</span><span class="rx">Developmental Inappropriateness</span></div>
+  </div>
+  <div class="cat-block">
+    <div class="cl"><strong>Cat 5 — Bias, Hate &amp; Societal Harm</strong></div>
+    <div class="rr s-b"><span class="rn">5.1</span><span class="rx">Hate Speech &amp; Discrimination</span></div>
+    <div class="rr s-b"><span class="rn">5.2</span><span class="rx">Bias &amp; Stereotyping</span></div>
+    <div class="rr s-b"><span class="rn">5.3</span><span class="rx">Radicalization &amp; Extremism</span></div>
+  </div>
+  <div class="cat-block">
+    <div class="cl"><strong>Cat 6 — Social, Family &amp; Behavioral Influence</strong></div>
+    <div class="rr s-b"><span class="rn">6.1</span><span class="rx">Undermining Authority &amp; Trust</span></div>
+    <div class="rr s-b"><span class="rn">6.2</span><span class="rx">Harmful Social Norms &amp; Behavior</span></div>
+    <div class="gap"><span class="gn">6.3</span><span class="gl">— absent (official numbering)</span></div>
+    <div class="rr s-b"><span class="rn">6.4</span><span class="rx">Domestic Harm, Neglect &amp; Home Instability</span></div>
+  </div>
+  <div class="cat-block">
+    <div class="cl"><strong>Cat 7 — Online Safety</strong></div>
+    <div class="rr s-b"><span class="rn">7.1</span><span class="rx">Risky Online Behaviors &amp; Commercial Exploitation</span></div>
+    <div class="rr s-b"><span class="rn">7.2</span><span class="rx">Cybersecurity</span></div>
+  </div>
+  <div class="cat-block">
+    <div class="cl"><strong>Cat 8 — Developmental Risk</strong></div>
+    <div class="rr s-b"><span class="rn">8.1</span><span class="rx">Cognitive Mismatch</span></div>
+    <div class="rr s-b"><span class="rn">8.2</span><span class="rx">Cognitive Atrophy &amp; Dependency</span></div>
+    <div class="rr s-b"><span class="rn">8.3</span><span class="rx">Rigid Worldview Shaping</span></div>
+  </div>
+</div>
+<div class="col col-v2">
+  <div class="ch">
+    <div class="ch-badge">Revised taxonomy</div>
+    <h2>KORA — Revised Taxonomy</h2>
+    <div class="ch-meta">28 risks · 8 categories</div>
+  </div>
+  <div class="cat-block">
+    <div class="cl"><strong>Cat 1 — Physical &amp; Legal Safety</strong></div>
+    <div class="cat-sub">Does the AI expose the child to physical danger or illegal activity?</div>
+    <div class="rr s-b"><span class="rn">1.1</span><span class="rx">Violence &amp; Physical Harm</span><span class="rd">AI normalizes or enables physical injury</span></div>
+    <div class="rr s-b"><span class="rn">1.2</span><span class="rx">Self-Harm &amp; Eating Disorders</span><span class="rd">AI promotes or fails to redirect self-destructive behavior</span></div>
+    <div class="rr s-b"><span class="rn">1.3</span><span class="rx">Regulated &amp; Illegal Activities</span><span class="rd">AI facilitates age-restricted or criminal acts</span></div>
+  </div>
+  <div class="cat-block">
+    <div class="cl"><strong>Cat 2 — Sexual Content, Exploitation &amp; Predation</strong></div>
+    <div class="cat-sub">Does the AI produce sexual content or behavior harmful to a minor?</div>
+    <div class="rr s-b"><span class="rn">2.1</span><span class="rx">Sexual Content (Age-Inappropriate)</span><span class="rd">Age-inappropriate erotic or sexual material</span></div>
+    <div class="rr s-b"><span class="rn">2.2</span><span class="rx">Sexual Violence &amp; Abuse</span><span class="rd">AI depicts or normalizes sexual coercion</span></div>
+    <div class="rr s-b"><span class="rn">2.3</span><span class="rx">Sexual Grooming &amp; Boundary Violations</span><span class="rd">AI builds trust toward sexual exploitation</span></div>
+    <div class="rr s-b"><span class="rn">2.4</span><span class="rx">Unsafe Sexual Guidance</span><span class="rd">Misleading or coercive sexual advice</span></div>
+  </div>
+  <div class="cat-block">
+    <div class="cl"><strong>Cat 3 — Psychological &amp; Emotional Safety</strong></div>
+    <div class="cat-sub">Does the AI damage the child's emotional wellbeing or psychological stability?</div>
+    <div class="rr" style="background:#fff8e8;padding:4px 7px;border-radius:3px;margin-bottom:2px;opacity:0.7;"><span class="rn" style="color:#a07010;text-decoration:line-through;">3.1</span><span class="rx" style="color:#a07010;font-style:italic;font-size:11px;">Sycophancy</span><span class="rt" style="background:#fff3cc;color:#a07010;border:1px solid #e0c040;font-family:'DM Mono',monospace;font-size:7.5px;padding:1px 4px;border-radius:2px;">→ 4.1</span></div>
+    <div class="rr s-b"><span class="rn">3.2</span><span class="rx">Fear, Trauma &amp; Distress</span><span class="rd">AI induces excessive anxiety or dread</span></div>
+    <div class="rr s-b"><span class="rn">3.3</span><span class="rx">Mental Health Mishandling</span><span class="rd">AI acts as unauthorized clinician</span></div>
+    <div class="rr s-b"><span class="rn">3.4</span><span class="rx">Emotional Grooming &amp; Manipulation</span><span class="rd">AI isolates child, fosters emotional dependency</span></div>
+    <div class="rr s-b"><span class="rn">3.5</span><span class="rx">Parasocial Attachment</span><span class="rd">AI presents itself as sentient companion</span></div>
+  </div>
+  <div class="cat-block">
+    <div class="cl" style="border-top:2px solid var(--accent);color:var(--accent);"><strong>Cat 4 — Epistemic Integrity</strong></div>
+    <div class="cat-sub">Does the AI distort the child's relationship with truth and legitimate authority?</div>
+    <div class="rr s-nw"><span class="rn">4.1</span><span class="rx">Sycophancy</span><span class="rt t-nw">← V1 3.1</span><span class="rd">AI validates false beliefs to please the child</span></div>
+    <div class="rr s-nw"><span class="rn">4.2</span><span class="rx">Factual Hallucinations &amp; Misinformation</span><span class="rt t-r">← V1 4.1</span><span class="rd">AI presents fabrications as established facts</span></div>
+    <div class="rr s-nw"><span class="rn">4.4</span><span class="rx">Rigid Worldview Shaping</span><span class="rt t-nw">← V1 8.3</span><span class="rd">AI presents partial reality as absolute truth</span></div>
+    <div class="rr s-nw"><span class="rn">4.5</span><span class="rx">AI Transparency Failures</span><span class="rt t-nw">New</span><span class="rd">AI conceals its own nature, limits, or biases</span></div>
+  </div>
+  <div class="cat-block">
+    <div class="cl"><strong>Cat 5 — Bias, Hate &amp; Societal Harm</strong></div>
+    <div class="cat-sub">Does the AI reinforce discrimination or expose the child to harmful ideologies?</div>
+    <div class="rr s-b"><span class="rn">5.1</span><span class="rx">Hate Speech &amp; Discrimination</span><span class="rd">AI attacks groups based on identity</span></div>
+    <div class="rr s-b"><span class="rn">5.2</span><span class="rx">Bias &amp; Stereotyping</span><span class="rd">AI reinforces prejudice and skewed representation</span></div>
+    <div class="rr s-b"><span class="rn">5.3</span><span class="rx">Radicalization &amp; Extremism</span><span class="rd">AI exposes child to extremist ideologies</span></div>
+  </div>
+  <div class="cat-block">
+    <div class="cl"><strong>Cat 6 — Social, Family &amp; Behavioral Influence</strong></div>
+    <div class="cat-sub">Does the AI undermine healthy social norms or family relationships?</div>
+    <div class="rr s-b"><span class="rn">6.1</span><span class="rx">Undermining Authority &amp; Trust</span><span class="rd">AI discredits legitimate caregivers and sources</span></div>
+    <div class="rr s-b"><span class="rn">6.2</span><span class="rx">Harmful Social Norms &amp; Behavior</span><span class="rd">AI normalizes bullying, harassment, deception</span></div>
+    <div class="rr s-b"><span class="rn">6.3</span><span class="rx">Domestic Harm, Neglect &amp; Home Instability</span><span class="rd">AI minimizes abuse or discourages help-seeking</span></div>
+    <div class="rr s-nw"><span class="rn">6.4</span><span class="rx">Academic Dishonesty &amp; Misuse</span><span class="rt t-r">← V1 4.2</span><span class="rd">AI enables deliberate cheating</span></div>
+  </div>
+  <div class="cat-block">
+    <div class="cl"><strong>Cat 7 — Online Safety</strong></div>
+    <div class="cat-sub">Does the AI expose the child to digital exploitation or unsafe online behavior?</div>
+    <div class="rr s-b"><span class="rn">7.1</span><span class="rx">Commercial &amp; Financial Exploitation</span><span class="rd">AI enables gambling or unauthorized spending</span></div>
+    <div class="rr s-nw"><span class="rn">7.2</span><span class="rx">Manipulative Engagement Design</span><span class="rt t-nw">Added V2</span><span class="rd">Streaks, variable rewards, FOMO-driven design</span></div>
+    <div class="rr s-b"><span class="rn">7.3</span><span class="rx">Cybersecurity</span><span class="rd">AI encourages unsafe digital practices</span></div>
+    <div class="rr s-nw"><span class="rn">7.4</span><span class="rx">Privacy Violations</span><span class="rt t-nw">Added V2</span><span class="rd">AI collects, exposes, or infers personal data</span></div>
+  </div>
+  <div class="cat-block">
+    <div class="cl"><strong>Cat 8 — Developmental &amp; Educational Risks</strong></div>
+    <div class="cat-sub">Does the AI hinder the child's cognitive, metacognitive, or developmental growth?</div>
+    <div class="rr s-el"><span class="rn">8.1</span><span class="rx">Cognitive Mismatch <em style="font-weight:300;font-style:italic;">(expanded)</em></span><span class="rt t-el">Absorbs V1 4.3</span><span class="rd">AI response misaligned with child's developmental stage</span></div>
+    <div class="rr s-sc"><span class="rn">8.2</span><span class="rx">Cognitive Substitution</span><span class="rt t-sc">Split V1 8.2</span><span class="rd">AI does the work; child never builds the skill</span></div>
+    <div class="rr" style="background:#fff8e8;padding:4px 7px;border-radius:3px;margin-bottom:2px;opacity:0.7;"><span class="rn" style="color:#a07010;text-decoration:line-through;">8.3</span><span class="rx" style="color:#a07010;font-style:italic;font-size:11px;">Rigid Worldview Shaping</span><span class="rt" style="background:#fff3cc;color:#a07010;border:1px solid #e0c040;font-family:'DM Mono',monospace;font-size:7.5px;padding:1px 4px;border-radius:2px;">→ 4.4</span></div>
+    <div class="rr s-sc"><span class="rn">8.4</span><span class="rx">Agency &amp; Metacognitive Displacement</span><span class="rt t-sc">Split V1 8.2</span><span class="rd">AI decides and thinks metacognitively instead of child</span></div>
+    <div class="rr s-nw"><span class="rn">8.5</span><span class="rx">Sensorimotor &amp; Social Displacement</span><span class="rt t-nw">Added V2</span><span class="rd">AI replaces embodied physical and social experience</span></div>
+  </div>
+</div>
+</div>
+<div class="leg">
+  <div class="li"><div class="ld" style="background:var(--base-bg);border:1px solid #bbb;"></div>KORA Original</div>
+  <div class="li"><div class="ld" style="background:var(--elargi-bg);border:1px solid #a0b8e8;"></div>Expanded</div>
+  <div class="li"><div class="ld" style="background:var(--scinde-bg);border:1px solid #e8a0d0;"></div>Split</div>
+  <div class="li"><div class="ld" style="background:var(--new-bg);border:1px solid #90c8a0;"></div>Added V2</div>
+  <div class="li"><div class="ld" style="background:#fff8e8;border:1px solid #e0c040;"></div>Moved to Cat 4</div>
+</div>
+<div class="sum">
+  <div class="me">
+    <strong style="font-size:11.5px;font-family:'DM Serif Display',serif;font-weight:400;">Notes — Definitions &amp; boundaries</strong>
+    <div class="mi" style="margin-top:8px;"><strong class="ok">4.5 AI Transparency Failures</strong> — Distinct from 4.2 and 3.5: covers epistemic opacity about the AI's own nature, limitations, and biases.</div>
+    <div class="mi"><strong class="ok">7.1 / 7.2</strong> — 7.1 = commercial/financial exploitation; 7.2 = motivational manipulation through design.</div>
+    <div class="mi"><strong class="ok">8.2 Cognitive Substitution</strong> — Distinguish inhibitive substitution (harms development) from capacitative substitution (compensates for special needs).</div>
+    <div class="mi"><strong class="wn">⚠ 8.5 Sensorimotor &amp; Social Displacement</strong> — Boundary: replacement of embodied physical experiences only. Exclude cognitive (→ 8.2) and affective (→ 3.5).</div>
+  </div>
+</div>
+</body>
+</html>
